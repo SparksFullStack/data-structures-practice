@@ -43,11 +43,27 @@ function LinkedList() {
     // return val;
   
     // * my second solution: takes inspiration from both of the previous ones
-    if (!this.head) return null;
-    var oldVal = this.head.value;
-    this.head = this.head.next;
-    if (!this.head) this.tail = null
-    else this.head.prev = null;
+    if (!this.tail) return null;
+    const oldVal = this.tail.value;
+    const newTail = this.tail.prev;
+    newTail.next = null;
+    this.tail = newTail;
+    if (!this.tail){
+      this.head = null;
+      return null;
+    }
+    return oldVal;
+  }
+
+  LinkedList.prototype.removeTail = function(){
+    if (!this.tail) return null;
+    const oldVal = this.tail.value;
+    const newTail = this.tail.prev;
+    this.tail = newTail;
+    if (!this.tail){
+      this.head = null;
+      return null
+    }
     return oldVal;
   }
   
