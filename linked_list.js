@@ -83,6 +83,21 @@ function LinkedList() {
       if (currentNode.value === searchValue) return true;
       else currentNode = currentNode.next;
     }
+    return false;
+  }
+
+  // * method that searches for a value and returns the index of said value
+  LinkedList.prototype.findIndexOf = function(searchValue){
+    let currentNode = this.head,
+        currentIndex = 0;
+    
+    while (currentNode){
+      if (currentNode.value === searchValue) return currentIndex;
+      else {
+        currentNode = currentNode.next;
+        currentIndex++;
+      }
+    }
 
     return false;
   }
