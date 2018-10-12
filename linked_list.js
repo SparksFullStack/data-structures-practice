@@ -66,6 +66,26 @@ function LinkedList() {
     }
     return oldVal;
   }
+
+  // * search method
+  LinkedList.prototype.search = function(searchValue){
+    // * my first solution
+    // let currentNode = this.head;
+    // while (currentNode.next){
+    //   if (currentNode.value === searchValue) return true;
+    //   else currentNode = currentNode.next;
+    // }
+    // return false;
+
+    // * second solution
+    let currentNode = this.head;
+    while (currentNode){
+      if (currentNode.value === searchValue) return true;
+      else currentNode = currentNode.next;
+    }
+
+    return false;
+  }
   
   const newList = new LinkedList();
   // newList.addToHead(5);
