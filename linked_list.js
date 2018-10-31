@@ -86,16 +86,38 @@ function LinkedList() {
     return false;
   }
 
+  // array of all the data for easy searching
+  const dataArray = [];
+
   // * method that searches for a value and returns the index of said value
   LinkedList.prototype.findIndexOf = function(searchValue){
-    let currentNode = this.head,
-        currentIndex = 0;
-    
+    // * first solution: returns the index
+    // let currentNode = this.head,
+    //     currentIndex = 0;
+
+    // while (currentNode){
+    //   if (currentNode.value === searchValue) return currentIndex;
+    //   else {
+    //     currentNode = currentNode.next;
+    //     currentIndex++;
+    //   }
+    // }
+
+    // return false;
+
+    // * second solution: returns the index AND stores the values in an array for easy access
+    let currentIndex = 0,
+        currentNode = this.head;
+
     while (currentNode){
-      if (currentNode.value === searchValue) return currentIndex;
+      dataArray.push(currentNode);
+      if (currentNode.value === searchValue) {
+        console.log(dataArray[currentIndex]);
+        return currentIndex;
+      }
       else {
-        currentNode = currentNode.next;
         currentIndex++;
+        currentNode = currentNode.next;
       }
     }
 

@@ -1,3 +1,22 @@
+// * constructor function
+function BST(value){
+    this.value = value;
+    this.left = null;
+    this.right = null;
+}
+
+BST.prototype.insert = function(newValue){
+    if (newValue <= this.value){
+        if (!this.left) this.left = new BST(newValue);
+        else this.left.insert(newValue);
+    } else {
+        if (!this.right) this.right = new BST(newValue);
+        else this.right.insert(newValue);
+    }
+}
+
+const bst = new BST(50);
+
 // * my first test of the general principles behind the algorithm
 const binaryTreeSearch = (input, searchVal) => {
     const searchArea = input;
