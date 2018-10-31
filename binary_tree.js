@@ -5,6 +5,7 @@ function BST(value){
     this.right = null;
 }
 
+// * insert will recursively call itself until it lands on a node that doesn't have either a left or right
 BST.prototype.insert = function(newValue){
     if (newValue <= this.value){
         if (!this.left) this.left = new BST(newValue);
@@ -16,6 +17,19 @@ BST.prototype.insert = function(newValue){
 }
 
 const bst = new BST(50);
+
+// * contains will search the BST to see if it contains the value of a particular node
+BST.prototype.contains = function(searchVal){
+    if (searchVal === this.value) return true;
+    if (searchVal <= this.value){
+        if (!this.left) return false;
+        else return this.left.contains(searchVal);
+    }
+    if (searchVal > this.value){
+        if (!this.right) return false;
+        else return this.right.contains(searchVal);
+    }
+}
 
 // * my first test of the general principles behind the algorithm
 const binaryTreeSearch = (input, searchVal) => {
